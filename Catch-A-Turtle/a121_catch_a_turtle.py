@@ -14,13 +14,13 @@ color = "pink"
 shape = "circle"
 score = 0
 font_setup = ("Arial", 20, "normal")
-timer = 30
+timer = 5
 times_up = False
 ms = 1000
 startTextFontSetup = ("Comic Sans", 20, "normal")
 
 randomSizeList = [0.5, 0.6, 0.7, 0.8, 0.9, 1, 2, 3, 4, 5]
-randomBgColor = ["green", "blue", "orange", "yellow", "white", "purple", "pink"]
+randomBgColor = ["green", "blue", "orange", "yellow", "white", "purple", "turquoise"]
 #-----initialize turtle-----
 dot = trtl.Turtle()
 dot.shape(shape)
@@ -98,7 +98,7 @@ def onClick(x, y):
 
 def start_game():
     startText.write("Welcome to Catch-A-Turtle!", font=startTextFontSetup)
-    sleep(1.5)
+    sleep(1)
     startText.clear()
     startText.write("Are you ready to play? (Y/N)", font=startTextFontSetup)
     startInput = input("Are you ready to play? (Y/N) ")
