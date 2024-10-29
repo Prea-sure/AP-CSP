@@ -14,7 +14,7 @@ color = "pink"
 shape = "circle"
 score = 0
 font_setup = ("Arial", 20, "normal")
-timer = 5
+timer = 30
 times_up = False
 ms = 1000
 startTextFontSetup = ("Comic Sans", 20, "normal")
@@ -116,7 +116,6 @@ def start_game():
 start_game()
 wn.bgcolor(rand.choice(randomBgColor))
 wn.mainloop()
-
 
 
 
