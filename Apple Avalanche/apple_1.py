@@ -6,7 +6,7 @@ import random as rand
 apple_image = "apple.gif" # Store the file name of your shape
 pear_image = "pear.gif"
 overlay_font = ("Arial", 43, "bold")
-random_letters = ["A", "S", "D", "F", "G", "H", "J", "K", "L", ";", "'", "Enter"]
+random_letters = ["A", "S", "D", "F", "G", "H", "J", "K", "L", ";", "'", "Enter", "P", "O", "N"]
 
 wn = trtl.Screen()
 wn.setup(width=1.0, height=1.0)
@@ -14,17 +14,27 @@ wn.addshape(apple_image) # Make the screen aware of the new file
 wn.addshape(pear_image)
 wn.bgpic("background.gif")
 
-apple = trtl.Turtle()
-apple.up()
+
+
+apples = []
+for i in range(5):
+  apple = trtl.Turtle()
+  apple.up()
+  apples.append(apple)
+
+for apple in apples:
+  apple.goto(rand.randint(-wn.canvwidth / 2, wn.canvwidth / 2), rand.randint(-wn.canvheight / 2, wn.canvheight / 2))
+
 current_letter = rand.choice(random_letters)
 #-----functions-----
 def move_apple():
-  x = apple.xcor()
-  y = apple.ycor()
-  apple.clear()
-  apple.goto(x, y - wn.canvheight / 2)
-  apple.hideturtle()
-  reset_apple(apple)
+  for apple in apples:
+    x = apple.xcor()
+    y = apple.ycor()
+    apple.clear()
+    apple.goto(x, y - wn.canvheight / 2)
+    apple.hideturtle()
+    reset_apple(apple)
 
 # given a turtle, set that turtle to be shaped by the image file
 def draw_apple(active_apple: trtl.Turtle, letter: str, image=apple_image):
@@ -34,22 +44,27 @@ def draw_apple(active_apple: trtl.Turtle, letter: str, image=apple_image):
  
 
 def letter_overlay(letter: str, current_apple: trtl.Turtle):
-  current_apple.color("white")
-  current_apple.showturtle()
-  current_apple.write(letter, align="center", font=overlay_font)
-  current_apple.setpos(apple.xcor(), apple.ycor() + 40)
+  for current_apple in apples:
+    current_apple.color("white")
+    current_apple.showturtle()
+    current_apple.write(letter, align="center", font=overlay_font)
+   # current_apple.setpos(current_apple.xcor(), current_apple.ycor() + 40)
 
 
 def reset_apple(current_apple: trtl.Turtle):
   global current_letter, random_letters
   random_len = len(random_letters)
-  if random_len != 0:
-    randomX = rand.randint(-wn.canvwidth / 2, wn.canvwidth / 2)
-    randomY = rand.randint(-wn.canvheight / 2, wn.canvheight / 2)
-    current_apple.goto(randomX, randomY)
-    current_letter = rand.choice(random_letters)
-    draw_apple(current_apple, current_letter)
+  for current_apple in apples:
+    if random_len != 0:
+      randomX = rand.randint(-wn.canvwidth / 2, wn.canvwidth / 2)
+      randomY = rand.randint(-wn.canvheight / 2, wn.canvheight / 2)
+      current_apple.goto(randomX, randomY)
+      current_letter = rand.choice(random_letters)
+      draw_apple(current_apple, current_letter)
+      random_letters.remove(current_letter)
+      print(random_letters)
 
+# TODO: Make this more efficient
 def checkA():
   if current_letter == "A":
     move_apple()
@@ -86,6 +101,18 @@ def checkL():
   if current_letter == "L":
     move_apple()
 
+def checkP():
+  if current_letter == "P":
+    move_apple()
+
+def checkO():
+  if current_letter == "O":
+    move_apple()
+
+def checkN():
+  if current_letter == "N":
+    move_apple()
+
 def checkSemiColon():
   if current_letter == ";":
     move_apple()
@@ -98,7 +125,11 @@ def checkEnter():
   if current_letter == "Enter":
     move_apple()
 #-----function calls-----
-draw_apple(apple, current_letter)
+draw_apple(apples[0], rand.choice(random_letters))
+# draw_apple(apples[1], rand.choice(random_letters))
+# draw_apple(apples[2], rand.choice(random_letters))
+# draw_apple(apples[3], rand.choice(random_letters))
+# draw_apple(apples[4], rand.choice(random_letters))
 
 wn.onkeypress(checkA, "a")
 wn.onkeypress(checkS, "s")
@@ -109,6 +140,9 @@ wn.onkeypress(checkH, "h")
 wn.onkeypress(checkJ, "j")
 wn.onkeypress(checkK, "k")
 wn.onkeypress(checkL, "l")
+wn.onkeypress(checkP, "p")
+wn.onkeypress(checkO, "o")
+wn.onkeypress(checkN, "n")
 wn.onkeypress(checkSemiColon, ";")
 wn.onkeypress(checkSingleQuote, "'")
 wn.onkeypress(checkEnter, "Return")
