@@ -1,4 +1,4 @@
-#   a123_apple_1.py
+#   a123_apple_1.py | TODO: Finish requirements.
 import turtle as trtl
 import random as rand
 
@@ -6,7 +6,7 @@ import random as rand
 apple_image = "apple.gif" # Store the file name of your shape
 pear_image = "pear.gif"
 overlay_font = ("Arial", 43, "bold")
-random_letters = ["A", "S", "D", "F", "G", "H", "J", "K", "L", ";", "'", "Enter", "P", "O", "N"]
+random_letters = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T", "U", "V", "W", "X", "Y", "Z"]
 
 wn = trtl.Screen()
 wn.setup(width=1.0, height=1.0)
@@ -19,16 +19,18 @@ wn.bgpic("background.gif")
 apples = []
 for i in range(5):
   apple = trtl.Turtle()
-  apple.up()
+  apple.hideturtle()
+  apple.penup()
+  apple.showturtle()
   apples.append(apple)
-
+  
 for apple in apples:
-  apple.goto(rand.randint(-wn.canvwidth / 2, wn.canvwidth / 2), rand.randint(-wn.canvheight / 2, wn.canvheight / 2))
+  apple.goto(rand.randint(-wn.canvwidth / 2.5, wn.canvwidth / 2.5), rand.randint(-wn.canvheight / 2.5, wn.canvheight / 2.5))
+ 
 
 current_letter = rand.choice(random_letters)
 #-----functions-----
 def move_apple():
-  for apple in apples:
     x = apple.xcor()
     y = apple.ycor()
     apple.clear()
@@ -44,37 +46,44 @@ def draw_apple(active_apple: trtl.Turtle, letter: str, image=apple_image):
  
 
 def letter_overlay(letter: str, current_apple: trtl.Turtle):
-  for current_apple in apples:
     current_apple.color("white")
     current_apple.showturtle()
     current_apple.write(letter, align="center", font=overlay_font)
-   # current_apple.setpos(current_apple.xcor(), current_apple.ycor() + 40)
+    current_apple.setpos(current_apple.xcor(), current_apple.ycor() + 40)
 
 
 def reset_apple(current_apple: trtl.Turtle):
-  global current_letter, random_letters
   random_len = len(random_letters)
-  for current_apple in apples:
-    if random_len != 0:
-      randomX = rand.randint(-wn.canvwidth / 2, wn.canvwidth / 2)
-      randomY = rand.randint(-wn.canvheight / 2, wn.canvheight / 2)
-      current_apple.goto(randomX, randomY)
-      current_letter = rand.choice(random_letters)
-      draw_apple(current_apple, current_letter)
-      random_letters.remove(current_letter)
-      print(random_letters)
+  if random_len != 0:
+    randomX = rand.randint(-wn.canvwidth / 2.5, wn.canvwidth / 2.5)
+    randomY = rand.randint(-wn.canvheight / 2.5, wn.canvheight / 2.5)
+    current_apple.goto(randomX, randomY)
+    current_letter = rand.choice(random_letters)
+    print(current_letter)
+    draw_apple(current_apple, current_letter)
+    random_letters.remove(current_letter)
+    print(random_letters)
+    
 
-# TODO: Make this more efficient
+# TODO: Make this more efficient [in like a year]
 def checkA():
   if current_letter == "A":
     move_apple()
 
-def checkS():
-  if current_letter == "S":
+def checkB():
+  if current_letter == "B":
+    move_apple()
+
+def checkC():
+  if current_letter == "C":
     move_apple()
 
 def checkD():
   if current_letter == "D":
+    move_apple()
+
+def checkE():
+  if current_letter == "E":
     move_apple()
 
 def checkF():
@@ -89,6 +98,10 @@ def checkH():
   if current_letter == "H":
     move_apple()
 
+def checkI():
+  if current_letter == "I":
+    move_apple()
+
 def checkJ():
   if current_letter == "J":
     move_apple()
@@ -101,50 +114,96 @@ def checkL():
   if current_letter == "L":
     move_apple()
 
-def checkP():
-  if current_letter == "P":
-    move_apple()
-
-def checkO():
-  if current_letter == "O":
+def checkM():
+  if current_letter == "M":
     move_apple()
 
 def checkN():
   if current_letter == "N":
     move_apple()
 
-def checkSemiColon():
-  if current_letter == ";":
+def checkO():
+  if current_letter == "O":
     move_apple()
 
-def checkSingleQuote():
-  if current_letter == "'":
+def checkP():
+  if current_letter == "P":
     move_apple()
 
-def checkEnter():
-  if current_letter == "Enter":
+def checkQ():
+  if current_letter == "Q":
     move_apple()
+
+def checkR():
+  if current_letter == "R":
+    move_apple()
+
+def checkS():
+  if current_letter == "S":
+    move_apple()
+
+def checkT():
+  if current_letter == "T":
+    move_apple()
+
+def checkU():
+  if current_letter == "U":
+    move_apple()
+
+def checkV():
+  if current_letter == "V":
+    move_apple()
+
+def checkW():
+  if current_letter == "W":
+    move_apple()
+
+def checkX():
+  if current_letter == "X":
+    move_apple()
+
+def checkY():
+  if current_letter == "Y":
+    move_apple()
+
+def checkZ():
+  if current_letter == "Z":
+    move_apple()
+
+
 #-----function calls-----
-draw_apple(apples[0], rand.choice(random_letters))
-# draw_apple(apples[1], rand.choice(random_letters))
-# draw_apple(apples[2], rand.choice(random_letters))
-# draw_apple(apples[3], rand.choice(random_letters))
-# draw_apple(apples[4], rand.choice(random_letters))
+for apple in apples:
+  if current_letter != rand.choice(random_letters):
+    current_letter = rand.choice(random_letters)
+    draw_apple(apple, current_letter)
 
 wn.onkeypress(checkA, "a")
-wn.onkeypress(checkS, "s")
+wn.onkeypress(checkB, "b")
+wn.onkeypress(checkC, "c")
 wn.onkeypress(checkD, "d")
+wn.onkeypress(checkE, "e")
 wn.onkeypress(checkF, "f")
 wn.onkeypress(checkG, "g")
 wn.onkeypress(checkH, "h")
+wn.onkeypress(checkI, "i")
 wn.onkeypress(checkJ, "j")
 wn.onkeypress(checkK, "k")
 wn.onkeypress(checkL, "l")
-wn.onkeypress(checkP, "p")
-wn.onkeypress(checkO, "o")
+wn.onkeypress(checkM, "m")
 wn.onkeypress(checkN, "n")
-wn.onkeypress(checkSemiColon, ";")
-wn.onkeypress(checkSingleQuote, "'")
-wn.onkeypress(checkEnter, "Return")
+wn.onkeypress(checkO, "o")
+wn.onkeypress(checkP, "p")
+wn.onkeypress(checkQ, "q")
+wn.onkeypress(checkR, "r")
+wn.onkeypress(checkS, "s")
+wn.onkeypress(checkT, "t")
+wn.onkeypress(checkU, "u")
+wn.onkeypress(checkV, "v")
+wn.onkeypress(checkW, "w")
+wn.onkeypress(checkX, "x")
+wn.onkeypress(checkY, "y")
+wn.onkeypress(checkZ, "z")
+
+
 wn.listen()
 wn.mainloop()
