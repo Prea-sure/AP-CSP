@@ -8,7 +8,8 @@ def wait(sec: float):
 
 def goodbye():
     text.clear()
-    text.write("Goodbye! Thanks for playing", font=font)
+    text.write("Goodbye! Thanks for playing.", font=font)
+    wn.bye()
 
 
 robot_idle = "robot-idle.gif"
@@ -34,7 +35,7 @@ wn.title("Test Your Math")
 
 
 correct.hideturtle(); correct.goto(correct.xcor() - 270, correct.ycor())
-incorrect.hideturtle(); incorrect.goto(incorrect.xcor() + 270, incorrect.ycor() - 40)
+incorrect.hideturtle(); incorrect.goto(incorrect.xcor() + 270, incorrect.ycor() - 50)
 
 correct.shape(correct_mark)
 incorrect.shape(incorrect_mark)
