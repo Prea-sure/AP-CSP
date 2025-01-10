@@ -47,14 +47,14 @@ robot.shape(robot_idle)
 
 robot.hideturtle()
 robot.penup()
-robot.goto(robot.xcor() + 270, robot.ycor() + 210)
+robot.goto(robot.xcor() + 300, robot.ycor() + 210)
 robot.showturtle()
 
 scoreText.write("Score: " + str(score), font=font)
 
 text.hideturtle()
 text.penup()
-text.goto(text.xcor() - 300, text.ycor() + 200)
+text.goto(text.xcor() - 340, text.ycor() + 200)
 text.write("Hello friend! What is your name?", font=font)
 
 question: float
