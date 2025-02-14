@@ -1,4 +1,3 @@
-# For Leslie
 import turtle as trtl
 
 wn = trtl.Screen()
@@ -26,10 +25,14 @@ def penSwitch(on: bool = False):
 
 
 letter = trtl.Turtle()
-font = ["Courier", 10, "normal"]
+question = trtl.Turtle(); question.hideturtle()
+font = ["Courier", 17, "bold"]
 letter.speed(8)
 letter.pensize(6)
 letter.hideturtle()
+
+name = wn.textinput('Name', "What's your name?")
+
 penSwitch()
 letter.goto(-400, 300)
 penSwitch(True)
@@ -50,7 +53,7 @@ penSwitch(True)
 right(180)
 fwd(475)
 penSwitch()
-letter.goto(-50, 0)
-letter.write("",font=font)
+letter.goto(-300, 70)
+letter.write("test",font=font)
 
 wn.mainloop()
