@@ -2,6 +2,7 @@ import turtle as trtl
 
 wn = trtl.Screen()
 
+
 def fwd(dist: float):
     letter.forward(dist)
 
@@ -14,46 +15,62 @@ def right(angle: float):
 def left(angle: float):
     letter.left(angle)
 
-def penSwitch(on: bool = False):
+def penSwitch(turtle: trtl.Turtle, on: bool = False ):
     if on == True:
-        letter.pendown()
+        turtle.pendown()
     else:
-        letter.penup()
+        turtle.penup()
 
 
 
 
 
 letter = trtl.Turtle()
-question = trtl.Turtle(); question.hideturtle()
-font = ["Courier", 17, "bold"]
+question = trtl.Turtle(); question.hideturtle(); penSwitch(question)
+drawing = trtl.Turtle(); drawing.hideturtle(); penSwitch(drawing)
+letterFont = ["Courier", 11, "bold"]
+questionFont = ["Arial", 30, "bold"]
+heart = "HEART.gif"
+wn.addshape(heart)
+drawing.shape(heart)
 letter.speed(8)
 letter.pensize(6)
 letter.hideturtle()
+question.goto(-350, 150)
+question.write("Hello! What's your name?", font=questionFont)
 
 name = wn.textinput('Name', "What's your name?")
 
-penSwitch()
-letter.goto(-400, 300)
-penSwitch(True)
-letter.color("pink")
-letter.begin_fill()
-fwd(725)
-right(90)
-fwd(475)
-right(90)
-fwd(725)
-right(90)
-fwd(475)
-letter.end_fill()
-penSwitch()
-letter.goto(-30, 300)
-letter.color("black")
-penSwitch(True)
-right(180)
-fwd(475)
-penSwitch()
-letter.goto(-300, 70)
-letter.write("test",font=font)
+if name:
+    question.clear()
+    penSwitch(letter)
+    letter.goto(-400, 300)
+    penSwitch(letter, True)
+    letter.color("pink")
+    letter.begin_fill()
+    fwd(825)
+    right(90)
+    fwd(575)
+    right(90)
+    fwd(825)
+    right(90)
+    fwd(575)
+    letter.end_fill()
+    penSwitch(letter)
+    letter.goto(25, 300)
+    letter.color("black")
+    penSwitch(letter, True)
+    right(180)
+    fwd(575)
+    penSwitch(letter)
+    letter.goto(-400, 70)
+    drawing.goto(400, 70)
+    letter.write("Hey, " + name + "! " + "I hope you're having a great day!",font=letterFont)
+    drawing.showturtle()
+else:
+    question.color("red")
+    question.clear()
+    question.write("You must have a name! Come back soon!", font=questionFont)
+    wn.bye()
 
 wn.mainloop()
