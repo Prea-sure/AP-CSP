@@ -1,3 +1,4 @@
+
 import turtle as trtl
 
 wn = trtl.Screen()
@@ -29,10 +30,8 @@ letter = trtl.Turtle()
 question = trtl.Turtle(); question.hideturtle(); penSwitch(question)
 drawing = trtl.Turtle(); drawing.hideturtle(); penSwitch(drawing)
 letterFont = ["Courier", 11, "bold"]
-questionFont = ["Arial", 30, "bold"]
-heart = "HEART.gif"
-wn.addshape(heart)
-drawing.shape(heart)
+questionFont = ["Arial", 17, "bold"]
+
 letter.speed(8)
 letter.pensize(6)
 letter.hideturtle()
@@ -64,8 +63,9 @@ if name:
     fwd(575)
     penSwitch(letter)
     letter.goto(-400, 70)
-    drawing.goto(400, 70)
+    drawing.goto(225, 70)
     letter.write("Hey, " + name + "! " + "I hope you're having a great day!",font=letterFont)
+    drawing.write("You're awesome! :D", font=questionFont)
     drawing.showturtle()
 else:
     question.color("red")
