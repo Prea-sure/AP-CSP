@@ -1,4 +1,3 @@
-
 import turtle as trtl
 
 wn = trtl.Screen()
@@ -16,7 +15,7 @@ def right(angle: float):
 def left(angle: float):
     letter.left(angle)
 
-def penSwitch(turtle: trtl.Turtle, on: bool = False ):
+def penSwitch(turtle: trtl.Turtle, on: bool = False):
     if on == True:
         turtle.pendown()
     else:
@@ -30,7 +29,7 @@ letter = trtl.Turtle()
 question = trtl.Turtle(); question.hideturtle(); penSwitch(question)
 drawing = trtl.Turtle(); drawing.hideturtle(); penSwitch(drawing)
 letterFont = ["Courier", 11, "bold"]
-questionFont = ["Arial", 17, "bold"]
+questionFont = ["Arial", 23, "bold"]
 
 letter.speed(8)
 letter.pensize(6)
@@ -63,10 +62,10 @@ if name:
     fwd(575)
     penSwitch(letter)
     letter.goto(-400, 70)
-    drawing.goto(225, 70)
+    drawing.goto(100, 70)
+    drawing.hideturtle()
     letter.write("Hey, " + name + "! " + "I hope you're having a great day!",font=letterFont)
     drawing.write("You're awesome! :D", font=questionFont)
-    drawing.showturtle()
 else:
     question.color("red")
     question.clear()
