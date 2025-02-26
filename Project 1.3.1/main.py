@@ -6,10 +6,6 @@ from time import *
 def wait(sec: float):
     sleep(sec)
 
-def goodbye():
-    text.clear()
-    text.write("Goodbye! Thanks for playing.", font=font)
-    wn.bye()
 
 
 robot_idle = "robot-idle.gif"
@@ -106,5 +102,4 @@ else:
     wn.bye()
 
 
-wn.onkeypress(goodbye, "y")
 wn.mainloop()
