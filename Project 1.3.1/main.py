@@ -13,7 +13,7 @@ robot_run = "robot-run.gif"
 correct_mark = "correct.gif"
 incorrect_mark = "incorrect.gif"
 
-font = ("Futura", 13, "bold")
+font = ["Futura", 13, "bold"]
 a = rand.randint(1, 20)
 b = rand.randint(1, 20)
 score = 0
